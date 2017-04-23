@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            position: relative;
+            width: 512px;
+            height: 400px;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        #img{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .up{
+            width: 512px;
+            height: 200px;
+            cursor: pointer;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+        }
+        .down{
+            width: 512px;
+            height: 200px;
+            cursor: pointer;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <img src="mi.png" alt="" id="img"/>
+    <span class="up" id="up"></span>
+    <span class="down" id="down"></span>
+</div>
+<script>
+    window.onload=function(){
+
+
+        alert('中国');
+    alert("中\"\r\n\"国");
+        function $(id){
+            return document.getElementById(id)
+        }
+        var  num=0;
+        var timer=null;
+        $('up').onmouseover=function(){
+            clearInterval(timer);
+           timer= setInterval(function(){
+                $('img').style.top=num-- +"px";
+                num<-1070?num=-1070:num--
+            },10)
+        };
+        $('down').onmouseover=function(){
+            clearInterval(timer);
+          timer= setInterval(function(){
+                $('img').style.top=num++ +"px";
+                num>0?num=0:num++
+            },10)
+
+        };
+        $('box').onmouseout=function(){
+            clearInterval(timer)
+        };
+
+
+    }
+
+
+</script>
+</body>
+</html>
